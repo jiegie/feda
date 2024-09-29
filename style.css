@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -13,27 +14,15 @@
     --heart-color: rgb(252, 8, 231);
 }
 
-.one {
-    background-color: #cccccc;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: var(--bg-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+body {
+    font-family: 'Comic Neue', sans-serif;
 }
 
 .background {
+    width: 100%;
     height: 100vh;
-    width: 100%;
     position: relative;
-}
-
-.one {
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
 }
 
 .background img {
@@ -43,28 +32,31 @@
 }
 
 .container {
-    height: 100%;
-    width: 100%;
-    top: 1.5rem;
-    display: grid;
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
     place-items: center;
 }
 
-.container > .envelope-wrapper {
+.envelope-wrapper {
     background: var(--bg-envelope-color);
-    box-shadow: 0 0 40px var(--shadow-color);
-}
-
-.envelope-wrapper > .envelope {
-    position: relative;
     width: 90%;
     max-width: 500px;
-    height: auto;
     aspect-ratio: 2/1;
+    box-shadow: 0 0 40px var(--shadow-color);
+    cursor: pointer;
 }
 
-.envelope-wrapper > .envelope::before {
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.envelope::before {
     content: "";
     position: absolute;
     top: 0;
@@ -76,7 +68,7 @@
     transition: all 0.5s ease-in-out 0.7s;
 }
 
-.envelope-wrapper > .envelope::after {
+.envelope::after {
     content: "";
     position: absolute;
     z-index: 2;
@@ -88,7 +80,7 @@
     border-left: 250px solid var(--envelope-cover);
 }
 
-.envelope > .letter {
+.letter {
     position: absolute;
     right: 20%;
     bottom: 0;
@@ -101,25 +93,29 @@
     padding: 15px 15px 50px 15px;
 }
 
-.envelope > .letter > .text {
-    font-family: 'Comic Neue';
+.text {
     color: var(--txt-color);
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.love {
+    text-align: center;
+    font-weight: bold;
 }
 
 .heart {
     position: absolute;
-    top: 51%;
+    top: 50%;
     left: 50%;
     width: 30px;
     height: 30px;
     background: rgb(255, 131, 151);
     z-index: 4;
-    transform: translate(-50%, -20%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
     transition: transform 0.5s ease-in-out 1s;
     box-shadow: 0 1px 6px var(--shadow-color);
-    cursor: pointer;
 }
 
 .heart:before, 
@@ -133,19 +129,19 @@
 }
 
 .heart:before {
-    top: -15.5px;
+    top: -15px;
 }
 
 .heart:after {
-    right: 15.5px;
+    right: 15px;
 }
 
-.flap > .envelope:before {
+.flap > .envelope::before {
     transform: rotateX(180deg);
     z-index: 0;
 }
 
-.flap > .envelope > .letter {
+.flap > .letter {
     bottom: 140px;
     transform: scale(1.5);
     transition-delay: 1s;
@@ -156,87 +152,45 @@
     transition-delay: 0.4s;
 }
 
-.love {
-    text-align: center;
-    font-weight: bold;
-}
-
-.pana {
-    width: 100%;
-    margin-top: .3rem;
-}
-
-.pana img {
-    width: 1.5rem;
-    margin: auto;
-}
-
-#window #gif img {
-    opacity: 0;
-    transition: opacity .3s, width .3s;
-    width: 5rem;
-}
-
-#gif {
-    pointer-events: none;
-}
-
-#window:hover #gif img {
-    opacity: 1;
-    width: 11rem;
-}
-
 /* MUSIC PLAYER */
 .music-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
     width: 90%;
-    max-width: 450px;
-    z-index: 1;
-    transition: all 0.4s ease-in-out;
-    overflow: hidden;
-}
-
-.music-container .toggle-player {
-    position: absolute;
-    top: -6px;
-    right: -10px;
-    z-index: 1;
-    cursor: pointer;
-    width: 25px;
-}
-
-.music-container .avatar {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    z-index: 2;
-}
-
-.music-container .player {
+    max-width: 350px;
+    z-index: 10;
+    background: #f5edd1;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shadow-color);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 15px 10px 10px;
     transition: transform 0.4s ease-in-out;
 }
 
-.music-container .sound-bars-lottie {
-    width: 100%;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
+.music-container .toggle-player {
+    margin-right: 1rem;
+    cursor: pointer;
 }
 
-.music-container .track-info {
+.music-container .avatar img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.music-container .player {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: 14px;
-    margin-bottom: 10px;
+}
+
+.music-container .track-info {
+    font-size: 12px;
     font-weight: bold;
+    margin: 0.5rem 0;
 }
 
 .music-container .track-nav {
@@ -245,17 +199,30 @@
     width: 60%;
 }
 
-.music-container .track-nav div {
+.music-container .track-nav img {
+    width: 20px;
     cursor: pointer;
 }
 
+/* MOBILE VIEW */
 @media (max-width: 768px) {
-    .envelope {
-        width: 80%;
+    .container {
+        top: 2rem;
     }
+
+    .envelope-wrapper {
+        width: 100%;
+    }
+
+    .letter {
+        padding: 10px 10px 30px 10px;
+        font-size: 12px;
+    }
+
     .music-container {
         bottom: 2rem;
-        width: 90%;
-        left: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
     }
 }

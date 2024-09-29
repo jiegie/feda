@@ -56,24 +56,24 @@ let soundBarsLottie = bodymovin.loadAnimation({
 
 let trackList = [
     {
-        name: "Only",
-        artist: "Lee Hi",
-        path: "./music/only.mp3",
+        name: "Love at First Sight",
+        artist: "The Brobeks",
+        path: "music/Love at First Sight.mp3",
     },
     {
-        name: "Day & Night",
-        artist: "Jung Seung Hwan",
-        path: "./music/day and night.mp3",
+        name: "I will",
+        artist: "The Beatles",
+        path: "music/I Will (Remastered 2009).mp3",
     },
     {
-        name: "Love of my Life",
-        artist: "Reyne",
-        path: "./music/love of my life.mp3",
+        name: "You're here that's the thing",
+        artist: "beabadoobee",
+        path: "music/Youre here thats the thing.mp3",
     },
     {
-        name: "The Only One",
-        artist: "Reyne",
-        path: "./music/the only one.mp3",
+        name: "Always",
+        artist: "Daniel Caesar",
+        path: "music/Daniel Caesar - Always (Official Lyric Video).mp3",
     },
 ];
 
